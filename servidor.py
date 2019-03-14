@@ -8,7 +8,7 @@ class Send:
   self.new=True
   self.con=None
  def put(self,msg):
-  self.__msg=msg
+  self.__msg= '[servidor] ' + msg
   if self.con != None:
    #envia um mensagem atravez de uma conexão socket
    self.con.send(str.encode(self.__msg))

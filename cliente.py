@@ -7,8 +7,8 @@ class Send:
   self.__msg=''
   self.new=True
   self.con=None
- def put(self,msg):
-  self.__msg=msg
+ def put(self,msg,usr):
+  self.__msg=usr + msg
   if self.con != None:
    #envia um mensagem atravez de uma conexão socket
    self.con.send(str.encode(self.__msg))
@@ -47,10 +47,11 @@ if __name__ == '__main__':
  processo=Thread(target=esperar,args=(tcp,send,host))
  processo.start()
  print('')
-  
+
+ usr = '[larisa] '
  msg=input()
  while True:
-  send.put(msg)
+  send.put(msg,usr)
   msg=input()
   
  processo.join()
